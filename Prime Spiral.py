@@ -6,7 +6,7 @@ Created on Sun Feb 20 18:01:56 2022
 """
 
 from PIL import Image, ImageDraw
-from math import sin,cos,pi
+from math import sin,cos
 
 def isprime(n):
     upper_bound = round(n**(0.5))

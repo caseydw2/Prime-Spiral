@@ -21,7 +21,7 @@ def draw_circle(point,im,factor):
     x,y = point[0],point[1]
     draw.ellipse([x-factor*0.25,y-factor*0.25,x+factor*0.25,y+factor*0.25],fill = "white")
 
-def draw_spiral(sprl_num,factor = 10):
+def draw_spiral(sprl_num,factor = 50,save = False):
     size = (factor * sprl_num + round(factor/4),factor * sprl_num +round(factor/4) )
     i,k,j,l = 1,1,0,0
     
@@ -52,5 +52,7 @@ def draw_spiral(sprl_num,factor = 10):
             l +=1
         l=0
         k +=1
+    if save:
+        im.save("Prime Spiral sprl_num {}, factor {}.png".format(sprl_num,factor))
     im.show()
             

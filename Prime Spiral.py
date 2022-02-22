@@ -6,6 +6,7 @@ Created on Sun Feb 20 18:01:56 2022
 """
 
 from PIL import Image, ImageDraw
+from math import sin,cos,pi
 
 def isprime(n):
     upper_bound = round(n**(0.5))
@@ -15,6 +16,9 @@ def isprime(n):
             return False
         i -= 1
     return True
+
+def plot_polar(p,center):
+    return (p*cos(p)+center[0],p*sin(p)+center[1])
 
 def draw_circle(point,im,factor):
     draw = ImageDraw.Draw(im)
@@ -54,5 +58,16 @@ def draw_spiral(sprl_num,factor = 50,save = False):
         k +=1
     if save:
         im.save("Prime Spiral sprl_num {}, factor {}.png".format(sprl_num,factor))
+    im.show()
+    
+def polar_prime_plot(ten_pwr,factor = 10,save=False):
+    size = (round(10**ten_pwr*factor/5) ,round(10**ten_pwr*factor/5) )
+    im = Image.new("RGB",size)
+    x,y = round(size[0]/2), round(size[1]/2)
+    for i in range(round(10**ten_pwr)):
+        if isprime(i):
+            draw_circle(plot_polar(i,(x,y)),im,factor*8)
+    if save:
+        im.save("polar prime plot ten_pwr {}, factor {}.png".format(ten_pwr,factor))
     im.show()
             
